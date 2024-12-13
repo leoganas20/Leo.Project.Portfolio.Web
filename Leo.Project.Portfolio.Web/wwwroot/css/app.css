@@ -9,7 +9,9 @@ body {
     font-family: 'Arial', sans-serif;
     color: #333;
 }
-
+h1 {
+    text-decoration: none;
+}
 a {
     text-decoration: none;
     color: inherit;
