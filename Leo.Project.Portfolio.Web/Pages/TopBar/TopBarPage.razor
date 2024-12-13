@@ -48,12 +48,12 @@
                 <MudNavLink Href="/">Home</MudNavLink>
                 <MudNavLink Match="NavLinkMatch.Prefix" Href="/">About</MudNavLink>
                 <MudNavLink Href="/" Disabled="true">Experience</MudNavLink>
-                <MudNavGroup Title="Services" Expanded="@(IsExpandedMenu || _expanded)" @onclick="OnExpandMenu">
-                    <MudNavLink Href="/">Web Dev</MudNavLink>
-                    <MudNavLink Href="/">Mobile Dev</MudNavLink>
-                    <MudNavLink Href="/">Game Dev (Unity)</MudNavLink>
-                    <MudNavLink Href="/">Front-End Dev</MudNavLink>
-                    <MudNavLink Href="/">Back-End Dev</MudNavLink>
+                <MudNavGroup Title="Services" Expanded="@(_expanded)" @onclick="OnExpandMenu">
+                    <MudNavLink OnClick="@OnExpandCollapseClick">Web Dev</MudNavLink>
+                    <MudNavLink OnClick="@OnExpandCollapseClick" >Mobile Dev</MudNavLink>
+                    <MudNavLink OnClick="@OnExpandCollapseClick">Game Dev (Unity)</MudNavLink>
+                    <MudNavLink OnClick="@OnExpandCollapseClick">Front-End Dev</MudNavLink>
+                    <MudNavLink OnClick="@OnExpandCollapseClick">Back-End Dev</MudNavLink>
                 </MudNavGroup>
                 <MudNavLink Href="/">Contact</MudNavLink>
             </MudNavMenu>
@@ -124,6 +124,12 @@
     private bool IsExpandedMenu = false;
     private void OnExpandMenu(){
         IsExpandedMenu = !IsExpandedMenu;
+    }
+
+    private void ExpandedMenuChanged(){
+        _expanded = false;
+        IsExpandedMenu = false;
+        StateHasChanged();
     }
 }
 <style>
