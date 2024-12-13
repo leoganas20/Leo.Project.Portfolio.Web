@@ -5,20 +5,11 @@
 <header class="top-bar">
     <div class="container">
         <div class="logo">
-            <a href="/">Dev.</a>
+            <a href="/">Leo Dev.</a>
         </div>
         @if (new[] { Breakpoint.Xs, Breakpoint.Sm }.Contains(updateBreakpoint))
-        {
-            @*    <MudStack Spacing="2">
-                 <MudToggleIconButton @onclick="OnExpandCollapseClick" @bind-Toggled="_expanded"
-                                     Icon="@Icons.Material.Filled.Menu"
-                                     ToggledIcon="@Icons.Material.Filled.Close"
-                                     Style="color: black; font-size: 22px;"
-                                     Size="Size.Large" />
-
-            </MudStack> *@
+        { 
             <MudIcon @onclick="OnExpandCollapseClick" Icon="@Icons.Material.Filled.Menu" Style="color: black; font-size: 22px;" Size="Size.Large" />
-
         }
         else
         {
