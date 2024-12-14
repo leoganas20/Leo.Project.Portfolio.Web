@@ -161,15 +161,16 @@ ul {
     padding: 60px 0;
     z-index: 20;
 }
-
+#about {
+    padding: 60px 0;
+    z-index: 20;
+}
     .portfolio-gallery h2 {
         text-align: center;
         font-size: 36px;
         margin-bottom: 40px;
     }
-#about{
-    margin-top: 80px;
-}
+ 
 .portfolio-items {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
