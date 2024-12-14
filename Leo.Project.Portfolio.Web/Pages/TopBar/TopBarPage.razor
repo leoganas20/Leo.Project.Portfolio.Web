@@ -1,16 +1,37 @@
 ﻿@using MudBlazor.Services
+@using Leo.Projects.Portfolio.Web.Pages.ComponentPageBase;
 @implements IBrowserViewportObserver
-@implements IAsyncDisposable 
+@implements IAsyncDisposable  
 
+@inherits ComponentPageBase
 <header class="top-bar">
     <div class="container">
         <div class="logo">
             @* <a href="/">Leo Dev.</a> *@
-            <img src="/images/LGdevLogo.png" width="100" style="object-fit: contain;">
+            <img src="/images/LGdevLogo.png" @onho width="100" style="object-fit: contain;">
         </div>
         @if (new[] { Breakpoint.Xs, Breakpoint.Sm }.Contains(updateBreakpoint))
-        { 
-            <MudIcon @onclick="OnExpandCollapseClick" Icon="@Icons.Material.Filled.Menu" Style="color: black; font-size: 32px;" Size="Size.Large" />
+        {
+             <div class="btn-group">
+
+                <MudChip Style="background-color: #A27B5C; color: white" CloseIcon="@Icons.Material.Filled.Download" T="string" Class="mx-5" Disabled="@_processing" OnClick="ProcessSomething" Variant="Variant.Filled">
+                    @if (_processing)
+                    {
+                        <MudText Class="mx-2">Processing</MudText>
+                        <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                    }
+                    else
+                    {
+                        <MudText>Download CV <MudIcon Icon="@Icons.Material.Filled.Download" /></MudText>
+                    }
+                </MudChip>
+
+                <MudIcon Class="mt-1" @onclick="OnExpandCollapseClick"
+                         Icon="@Icons.Material.Filled.Menu"
+                         Style="color: black; font-size: 32px;"
+                         Size="Size.Large" />
+               
+             </div>
         }
         else
         {
@@ -26,33 +47,35 @@
         }
 
     </div>
+
+    <MudDrawer Style="color: #2C3639; background-color:#DCD7C9;" @bind-Open="@_expanded" Anchor="@_anchor" Elevation="10000" Variant="@DrawerVariant.Temporary" OverlayAutoClose="@_overlayAutoClose">
+        <MudDrawerHeader Class="d-flex justify-content-between">
+            <MudText Typo="Typo.h6">Menu</MudText>
+            <MudIcon @onclick="OnExpandCollapseClick" Icon="@Icons.Material.Filled.Close" Style="color: black; font-size: 32px;" Size="Size.Large" />
+
+        </MudDrawerHeader>
+        <MudNavMenu Style="background: #fcf6e3">
+            <MudPaper Width="auto" Class="py-3">
+                <MudNavMenu Bordered="true" Color="Color.Dark">
+                    <MudNavLink Href="/">Home</MudNavLink>
+                    <MudNavLink Match="NavLinkMatch.Prefix" Href="#about">About</MudNavLink>
+                    <MudNavLink Href="/" Disabled="true">Experience</MudNavLink>
+                    <MudNavGroup Title="Services" Expanded="@(_expanded)" @onclick="OnExpandMenu">
+                        <MudNavLink OnClick="@OnExpandCollapseClick">Web Dev</MudNavLink>
+                        <MudNavLink OnClick="@OnExpandCollapseClick">Mobile Dev</MudNavLink>
+                        <MudNavLink OnClick="@OnExpandCollapseClick">Game Dev (Unity)</MudNavLink>
+                        <MudNavLink OnClick="@OnExpandCollapseClick">Front-End Dev</MudNavLink>
+                        <MudNavLink OnClick="@OnExpandCollapseClick">Back-End Dev</MudNavLink>
+                    </MudNavGroup>
+                    <MudNavLink Href="/">Contact</MudNavLink>
+                </MudNavMenu>
+            </MudPaper>
+        </MudNavMenu>
+    </MudDrawer>
+    <MudOverlay @bind-Visible="_expanded" DarkBackground />
 </header>
+ 
 
-<MudDrawer Style="color: #2C3639; background-color:#DCD7C9" @bind-Open="@_expanded" Anchor="@_anchor" Elevation="10000" Variant="@DrawerVariant.Temporary" OverlayAutoClose="@_overlayAutoClose">
-    <MudDrawerHeader Class="d-flex justify-content-between">
-        <MudText Typo="Typo.h6">Menu</MudText>
-        <MudIcon @onclick="OnExpandCollapseClick" Icon="@Icons.Material.Filled.Close" Style="color: black; font-size: 32px;" Size="Size.Large" />
-
-    </MudDrawerHeader>
-    <MudNavMenu Style="background: #fcf6e3">
-        <MudPaper Width="auto" Class="py-3">
-            <MudNavMenu Bordered="true" Color="Color.Dark">
-                <MudNavLink Href="/">Home</MudNavLink>
-                <MudNavLink Match="NavLinkMatch.Prefix" Href="/">About</MudNavLink>
-                <MudNavLink Href="/" Disabled="true">Experience</MudNavLink>
-                <MudNavGroup Title="Services" Expanded="@(_expanded)" @onclick="OnExpandMenu">
-                    <MudNavLink OnClick="@OnExpandCollapseClick">Web Dev</MudNavLink>
-                    <MudNavLink OnClick="@OnExpandCollapseClick" >Mobile Dev</MudNavLink>
-                    <MudNavLink OnClick="@OnExpandCollapseClick">Game Dev (Unity)</MudNavLink>
-                    <MudNavLink OnClick="@OnExpandCollapseClick">Front-End Dev</MudNavLink>
-                    <MudNavLink OnClick="@OnExpandCollapseClick">Back-End Dev</MudNavLink>
-                </MudNavGroup>
-                <MudNavLink Href="/">Contact</MudNavLink>
-            </MudNavMenu>
-        </MudPaper>
-    </MudNavMenu>
-</MudDrawer>
-<MudOverlay @bind-Visible="_expanded" DarkBackground />
 @code{
     [Inject]  private IBrowserViewportService BrowserViewportService { get; set; }
 
@@ -122,6 +145,15 @@
         _expanded = false;
         IsExpandedMenu = false;
         StateHasChanged();
+    }
+
+    private bool _processing = false;
+
+    async Task ProcessSomething()
+    {
+        _processing = true;
+        await Task.Delay(2000);
+        _processing = false;
     }
 }
 <style>

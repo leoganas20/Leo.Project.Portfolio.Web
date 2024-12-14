@@ -6,6 +6,6 @@ public class ComponentPageBase : ComponentBase
 {
     protected bool IsVisible { get; set; }
 
-    
+    protected bool IsHidden { get; set; }
 
 }

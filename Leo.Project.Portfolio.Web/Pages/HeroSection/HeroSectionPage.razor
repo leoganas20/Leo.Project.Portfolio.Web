@@ -1,4 +1,10 @@
-﻿
+﻿@using MudBlazor.Services
+@using Leo.Projects.Portfolio.Web.Pages.ComponentPageBase;
+@implements IBrowserViewportObserver
+@implements IAsyncDisposable
+
+@inherits ComponentPageBase
+
 <section class="hero-section">
     <div class="container">
         <!-- Wrap the content and image in a flex container -->
@@ -12,6 +18,90 @@
 
             <!-- Hero Image -->
             <img src="/images/img-profile-pic.png" class="hero-image" alt="Profile Picture">
+            @if (new[] { Breakpoint.Xs, Breakpoint.Sm }.Contains(updateBreakpoint))
+            {
+
+            }
+            else
+            {
+                <p class="about-me">I am a qualified web developer with @((DateTime.Now.Year - 2020))+ years of experience in .Net Blazor (Web and Hybrid-MAUI). Skilled in both front-end and back-end technologies like C#, Blazor, .Net Core, SQL Server, HTML, and CSS. I'm passionate about building responsive websites and continuously learning new technologies to grow my expertise.</p>
+            }
+           
         </div>
     </div>
 </section>
+
+@code {
+    [Inject] private IBrowserViewportService BrowserViewportService { get; set; }
+
+    private List<Breakpoint> _breakpointHistory = new();
+    private Breakpoint _start;
+    private Breakpoint updateBreakpoint;
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await BrowserViewportService.SubscribeAsync(this, fireImmediately: true);
+        }
+
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    public async ValueTask DisposeAsync() => await BrowserViewportService.UnsubscribeAsync(this);
+
+    Guid IBrowserViewportObserver.Id { get; } = Guid.NewGuid();
+
+    ResizeOptions IBrowserViewportObserver.ResizeOptions { get; } = new()
+        {
+            ReportRate = 250,
+            NotifyOnBreakpointOnly = true
+        };
+
+    Task IBrowserViewportObserver.NotifyBrowserViewportChangeAsync(BrowserViewportEventArgs browserViewportEventArgs)
+    {
+        if (browserViewportEventArgs.IsImmediate)
+        {
+            _start = browserViewportEventArgs.Breakpoint;
+        }
+        else
+        {
+            _breakpointHistory.Add(browserViewportEventArgs.Breakpoint);
+        }
+        updateBreakpoint = browserViewportEventArgs.Breakpoint;
+        return InvokeAsync(StateHasChanged);
+    }
+
+    bool _expanded = false;
+
+    private void OnExpandCollapseClick()
+    {
+        _expanded = !_expanded;
+        if (!_expanded)
+        {
+            IsExpandedMenu = false;
+        }
+        StateHasChanged();
+    }
+
+    private Anchor _anchor = Anchor.Top;
+    private bool _overlayAutoClose = true;
+
+    private void OpenDrawer(Anchor anchor)
+    {
+        _expanded = true;
+        _anchor = anchor;
+    }
+
+    private bool IsExpandedMenu = false;
+    private void OnExpandMenu()
+    {
+        IsExpandedMenu = !IsExpandedMenu;
+    }
+
+    private void ExpandedMenuChanged()
+    {
+        _expanded = false;
+        IsExpandedMenu = false;
+        StateHasChanged();
+    }
+}
