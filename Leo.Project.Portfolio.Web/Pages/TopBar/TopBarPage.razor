@@ -5,11 +5,12 @@
 <header class="top-bar">
     <div class="container">
         <div class="logo">
-            <a href="/">Leo Dev.</a>
+            @* <a href="/">Leo Dev.</a> *@
+            <img src="/images/LGdevLogo.png" width="100" style="object-fit: contain;">
         </div>
         @if (new[] { Breakpoint.Xs, Breakpoint.Sm }.Contains(updateBreakpoint))
         { 
-            <MudIcon @onclick="OnExpandCollapseClick" Icon="@Icons.Material.Filled.Menu" Style="color: black; font-size: 22px;" Size="Size.Large" />
+            <MudIcon @onclick="OnExpandCollapseClick" Icon="@Icons.Material.Filled.Menu" Style="color: black; font-size: 32px;" Size="Size.Large" />
         }
         else
         {
@@ -27,15 +28,15 @@
     </div>
 </header>
 
-<MudDrawer @bind-Open="@_expanded" Anchor="@_anchor" Elevation="10000" Variant="@DrawerVariant.Temporary" OverlayAutoClose="@_overlayAutoClose">
+<MudDrawer Style="color: #2C3639; background-color:#DCD7C9" @bind-Open="@_expanded" Anchor="@_anchor" Elevation="10000" Variant="@DrawerVariant.Temporary" OverlayAutoClose="@_overlayAutoClose">
     <MudDrawerHeader Class="d-flex justify-content-between">
         <MudText Typo="Typo.h6">Menu</MudText>
-        <MudIcon @onclick="OnExpandCollapseClick" Icon="@Icons.Material.Filled.Close" Style="color: black; font-size: 22px;" Size="Size.Large" />
+        <MudIcon @onclick="OnExpandCollapseClick" Icon="@Icons.Material.Filled.Close" Style="color: black; font-size: 32px;" Size="Size.Large" />
 
     </MudDrawerHeader>
-    <MudNavMenu>
+    <MudNavMenu Style="background: #fcf6e3">
         <MudPaper Width="auto" Class="py-3">
-            <MudNavMenu Bordered="true">
+            <MudNavMenu Bordered="true" Color="Color.Dark">
                 <MudNavLink Href="/">Home</MudNavLink>
                 <MudNavLink Match="NavLinkMatch.Prefix" Href="/">About</MudNavLink>
                 <MudNavLink Href="/" Disabled="true">Experience</MudNavLink>
@@ -142,5 +143,11 @@
         border-radius: 50%;
         color: white;
     }
- 
+
+    .mud-navmenu.mud-navmenu-dark .mud-nav-link.active:not(.mud-nav-link-disabled){
+        color: #596E79;
+        --mud-ripple-color: var(--mud-palette-dark);
+        background-color: var(--mud-palette-dark-hover);
+        font-size: 16px;
+    }
 </style>

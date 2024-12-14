@@ -23,7 +23,7 @@ ul {
 }
 
 .container {
-    width: 80%;
+    width: 89%;
     margin: 0 auto;
 }
 .top-collapse {
@@ -91,7 +91,7 @@ ul {
 
     .hero-section .hero-content h1 {
         font-size: 50px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 
     .hero-section .hero-content p {
@@ -100,7 +100,7 @@ ul {
     }
 
     .hero-section .btn {
-        background-color: #ff6f61;
+        background-color: #A27B5C;
         color: white;
         padding: 10px 20px;
         border-radius: 5px;
@@ -119,6 +119,10 @@ ul {
     height: auto;
     object-fit: contain; /* Makes sure the image maintains its aspect ratio and doesn't distort */
     z-index: 1; /* Ensures the image stays behind the text */
+    filter: drop-shadow(1px 1px 0px #DCD7C9) /* Bottom-right shadow */
+    drop-shadow(-1px 1px 0px #DCD7C9) /* Bottom-left shadow */
+    drop-shadow(1px -1px 0px #DCD7C9) /* Top-right shadow */
+    drop-shadow(-1px -1px 0px #DCD7C9); /* Top-left shadow */
 }
 /* Portfolio Gallery */
 .portfolio-gallery {
