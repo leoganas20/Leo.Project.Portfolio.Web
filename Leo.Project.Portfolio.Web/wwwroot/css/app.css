@@ -134,6 +134,9 @@ ul {
     position: relative; /* Ensures the text content stays above the image */
     z-index: 2; /* Ensures text stays on top of the image */
 }
+.burger-btn{
+    cursor: pointer;
+}
 .hero-image {
     position: absolute; /* Allows positioning of the image inside the section */
     margin-left: 250px;

@@ -26,7 +26,7 @@
                     }
                 </MudChip>
 
-                <MudIcon Class="mt-1" @onclick="OnExpandCollapseClick"
+                <MudIcon Class="mt-1 burger-btn" @onclick="OnExpandCollapseClick"
                          Icon="@Icons.Material.Filled.Menu"
                          Style="color: black; font-size: 32px;"
                          Size="Size.Large" />
@@ -39,6 +39,7 @@
                 <ul class="nav-list">
                     <li><a href="/">Home</a></li>
                     <li><a href="/about">About</a></li>
+                    <li><a href="/skills">About</a></li>
                     <li><a href="/portfolio" class="active">Experience</a></li>
                     <li><a href="/services">Services</a></li>
                     <li><a href="/contact">Contact</a></li>
@@ -71,7 +72,7 @@
     <MudDrawer Style="color: #2C3639; background-color:#DCD7C9;" @bind-Open="@_expanded" Anchor="@_anchor" Elevation="10000" Variant="@DrawerVariant.Temporary" OverlayAutoClose="@_overlayAutoClose">
         <MudDrawerHeader Class="d-flex justify-content-between">
             <MudText Typo="Typo.h6">Menu</MudText>
-            <MudIcon @onclick="OnExpandCollapseClick" Icon="@Icons.Material.Filled.Close" Style="color: black; font-size: 32px;" Size="Size.Large" />
+            <MudIcon Class="burger-btn" @onclick="OnExpandCollapseClick" Icon="@Icons.Material.Filled.Close" Style="color: black; font-size: 32px;" Size="Size.Large" />
 
         </MudDrawerHeader>
         <MudNavMenu Style="background: #fcf6e3">
@@ -79,6 +80,7 @@
                 <MudNavMenu Bordered="true" Color="Color.Dark">
                     <MudNavLink Href="/">Home</MudNavLink>
                     <MudNavLink Match="NavLinkMatch.Prefix" Href="#about">About</MudNavLink>
+                    <MudNavLink Match="NavLinkMatch.Prefix" Href="#skills">Skills</MudNavLink>
                     <MudNavLink Href="#portfolio-gallery" Disabled="false">Experience</MudNavLink>
                     <MudNavGroup Title="Services" Expanded="@(_expanded)" @onclick="OnExpandMenu">
                         <MudNavLink OnClick="@OnExpandCollapseClick">Web Dev</MudNavLink>
