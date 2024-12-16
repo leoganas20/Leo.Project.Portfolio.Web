@@ -39,9 +39,9 @@
                 <ul class="nav-list">
                     <li><a href="/">Home</a></li>
                     <li><a href="/about">About</a></li>
-                    <li><a href="/skills">About</a></li>
+                    <li><a href="/skills">Skills</a></li>
                     <li><a href="/portfolio" class="active">Experience</a></li>
-                    <li><a href="/services">Services</a></li>
+                   @*  <li><a href="/services">Services</a></li> *@
                     <li><a href="/contact">Contact</a></li>
                     <li class="chip-item">
                         <MudChip Style="background-color: #A27B5C; color: white"
@@ -82,14 +82,14 @@
                     <MudNavLink Match="NavLinkMatch.Prefix" Href="#about">About</MudNavLink>
                     <MudNavLink Match="NavLinkMatch.Prefix" Href="#skills">Skills</MudNavLink>
                     <MudNavLink Href="#portfolio-gallery" Disabled="false">Experience</MudNavLink>
-                    <MudNavGroup Title="Services" Expanded="@(_expanded)" @onclick="OnExpandMenu">
+                  @*   <MudNavGroup Title="Services" Expanded="@(_expanded)" @onclick="OnExpandMenu">
                         <MudNavLink OnClick="@OnExpandCollapseClick">Web Dev</MudNavLink>
                         <MudNavLink OnClick="@OnExpandCollapseClick">Mobile Dev</MudNavLink>
                         <MudNavLink OnClick="@OnExpandCollapseClick">Game Dev (Unity)</MudNavLink>
                         <MudNavLink OnClick="@OnExpandCollapseClick">Front-End Dev</MudNavLink>
                         <MudNavLink OnClick="@OnExpandCollapseClick">Back-End Dev</MudNavLink>
-                    </MudNavGroup>
-                    <MudNavLink Href="/">Contact</MudNavLink>
+                    </MudNavGroup> *@
+                    <MudNavLink Href="#contact">Contact</MudNavLink>
                 </MudNavMenu>
             </MudPaper>
         </MudNavMenu>
