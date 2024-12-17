@@ -5,6 +5,8 @@ VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leo.Project.Portfolio.Web", "Leo.Project.Portfolio.Web\Leo.Project.Portfolio.Web.csproj", "{2B1E0A8E-AD56-464F-9BBF-3BF2E713D858}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leo.Project.Portfolio.Api", "Leo.Project.Portfolio.Api\Leo.Project.Portfolio.Api.csproj", "{8995BD51-03AD-45ED-A13B-154FAB0C89D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2B1E0A8E-AD56-464F-9BBF-3BF2E713D858}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B1E0A8E-AD56-464F-9BBF-3BF2E713D858}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B1E0A8E-AD56-464F-9BBF-3BF2E713D858}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8995BD51-03AD-45ED-A13B-154FAB0C89D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8995BD51-03AD-45ED-A13B-154FAB0C89D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8995BD51-03AD-45ED-A13B-154FAB0C89D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8995BD51-03AD-45ED-A13B-154FAB0C89D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
