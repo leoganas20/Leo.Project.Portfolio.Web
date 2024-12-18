@@ -1,5 +1,9 @@
 ﻿@page "/"
 @inherits HomeBase
+@using Leo.Project.Portfolio.Web.Services;
+@using static Leo.Project.Portfolio.Web.Pages.Weather
+
+@inject PortfolioApiService ApiService
 
 <div class="portfolio-container">
     <LoaderPage IsVisible="@IsVisible"/>
@@ -20,3 +24,13 @@
     <FooterPage />
 
 </div>
+
+@code {
+    private IEnumerable<WeatherForecast> weatherForecasts;
+
+    // Fetch weather data when the component is initialized
+    protected override async Task OnInitializedAsync()
+    {
+        weatherForecasts = await ApiService.GetWeatherForecastAsync();
+    }
+}
