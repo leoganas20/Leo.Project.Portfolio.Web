@@ -8,9 +8,11 @@ using Leo.Project.Portfolio.Api.Model;
 using System.Linq.Expressions;
 using LinqKit;
 using NETCore.MailKit.Core;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Leo.Project.Portfolio.Api.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class RequestEmailController : ControllerBase
@@ -25,32 +27,41 @@ namespace Leo.Project.Portfolio.Api.Controllers
         [HttpPost("GetRequestEmails")]
         public async Task<ActionResult<DataSourceResponse>> GetRequestEmails([FromBody] DataSourceRequest request)
         {
-            IQueryable<RequestEmail> query = _context.RequestEmails;
-
-            // Apply filtering if the filter is provided
-            if (request.Filter != null && request.Filter.Filters.Any())
+            try
             {
-                ApplyFilter(ref query, request.Filter);
+                IQueryable<RequestEmail> query = _context.RequestEmails;
+
+                // Apply filtering if the filter is provided
+                if (request.Filter != null && request.Filter.Filters.Any())
+                {
+                    ApplyFilter(ref query, request.Filter);
+                }
+
+                // Apply sorting if provided
+                if (request.Sort != null && request.Sort.Any())
+                {
+                    ApplySorting(ref query, request.Sort);
+                }
+
+                // Pagination: Apply skip and take
+                var totalCount = await query.CountAsync();
+                var result = await query.Skip(request.Skip).Take(request.Take).ToListAsync();
+
+                // Return the result in the expected format
+                var response = new DataSourceResponse
+                {
+                    Total = totalCount,
+                    Data = result
+                };
+
+                return Ok(response);
             }
-
-            // Apply sorting if provided
-            if (request.Sort != null && request.Sort.Any())
+            catch (Exception ex)
             {
-                ApplySorting(ref query, request.Sort);
+                // Log the exception (e.g., to file or Azure Application Insights)
+                return StatusCode(500, "Internal Server Error: " + ex.Message);
             }
-
-            // Pagination: Apply skip and take
-            var totalCount = await query.CountAsync();
-            var result = await query.Skip(request.Skip).Take(request.Take).ToListAsync();
-
-            // Return the result in the expected format
-            var response = new DataSourceResponse
-            {
-                Total = totalCount,
-                Data = result
-            };
-
-            return Ok(response);
+            
         }
 
         [HttpPost("send-email")]

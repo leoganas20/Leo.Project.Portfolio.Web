@@ -1,3 +1,4 @@
+using Blazored.LocalStorage;
 using Leo.Project.Portfolio.Web.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -15,16 +16,25 @@ namespace Leo.Project.Portfolio.Web
             builder.RootComponents.Add<HeadOutlet>("head::after");
 
             var env = builder.HostEnvironment;
+
             // Set the API base URL depending on the environment
             var apiBaseUrl = env.IsDevelopment()
                 ? "https://localhost:7008" // Development URL
-                : "https://leoprojectportfolioapi20241218212239.azurewebsites.net/"; // Production URL
+                : "https://portfolio-api-bce7cjdng7e3crfn.canadacentral-01.azurewebsites.net"; // Production URL
 
-            // Add HttpClient with the API base URL
+            // Add the custom HTTP message handler
+            //builder.Services.AddScoped<AuthorizationMessageHandler>();
+
+            // Add HttpClient with the custom handler
             builder.Services.AddScoped(sp => new HttpClient
             {
                 BaseAddress = new Uri(apiBaseUrl)
             });
+
+            // Register services
+            builder.Services.AddBlazoredLocalStorage(); // For localStorage
+            builder.Services.AddScoped<LogService>();   // Register the login service
+
             builder.Services.AddScoped<RequestEmailService>();
             builder.Services.AddMudServices();
             builder.Services.AddScoped<PortfolioApiService>();

@@ -1,4 +1,5 @@
 ﻿using Leo.Project.Portfolio.Api.DbSet;
+using Leo.Project.Portfolio.Api.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace Leo.Project.Portfolio.Api;
@@ -12,4 +13,5 @@ public class AppDbContext : DbContext
 
     // Define your DbSet properties here (representing tables)
     public DbSet<RequestEmail> RequestEmails { get; set; }
+    public DbSet<LoginModel> Users { get; set; }
 }

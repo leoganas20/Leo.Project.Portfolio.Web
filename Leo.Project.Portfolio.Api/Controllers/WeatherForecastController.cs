@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
  
 
 namespace Leo.Project.Portfolio.Api.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")] // This will route to api/weatherforecast by default
     public class WeatherForecastController : ControllerBase
