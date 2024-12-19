@@ -68,7 +68,7 @@ ul {
 .email-container {
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    right: 30px;
     z-index: 1000;
     display: flex;
     flex-direction: column;
@@ -118,8 +118,8 @@ ul {
     }
 
     .email-container {
-        bottom: 15px; /* Slightly closer to the bottom */
-        right: 15px;
+        bottom: 30px; /* Adjust positioning for smaller screens */
+        right: 30px; /* Slightly smaller margin on the right */
     }
 }
 
@@ -132,8 +132,8 @@ ul {
     }
 
     .email-container {
-        bottom: 20px;
-        right: 20px;
+        bottom: 30px; /* Adjust positioning for smaller screens */
+        right: 30px; /* Slightly smaller margin on the right */
     }
 }
 @media (max-width: 480px) {
@@ -144,8 +144,8 @@ ul {
     }
 
     .email-container {
-        bottom: 20px; /* Adjust positioning for smaller screens */
-        right: 10px; /* Slightly smaller margin on the right */
+        bottom: 30px; /* Adjust positioning for smaller screens */
+        right: 30px; /* Slightly smaller margin on the right */
     }
 }
 
