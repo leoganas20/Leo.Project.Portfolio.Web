@@ -63,6 +63,143 @@ ul {
     .chip-item .mud-chip {
         box-shadow: none; /* Remove the elevation/shadow from MudChip */
     }
+
+/* Email Container */
+.email-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Email Button */
+.email-button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.email-fab-button {
+    background-color: #A27B5C;
+}
+/* Email Form */
+.email-form {
+    position: absolute;
+    bottom: 70px; /* Position above the button */
+    right: 0;
+    width: 500px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    background: white;
+    animation: slide-in 0.3s ease-out;
+    z-index: 1000;
+}
+
+/* Form Actions */
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+/* Small Screen (Mobile Portrait) */
+@media (max-width: 480px) {
+    .email-form {
+        width: auto; /* Adjust width to fit smaller screens */
+        right: 5%; /* Centered with small margin */
+        padding: 12px; /* Reduced padding for smaller screens */
+        bottom: 90px; /* Slightly more space above the button */
+    }
+
+    .email-container {
+        bottom: 15px; /* Slightly closer to the bottom */
+        right: 15px;
+    }
+}
+
+/* Medium Screen (Mobile Landscape, Small Tablets) */
+@media (max-width: 768px) and (min-width: 481px) {
+    .email-form {
+        width: 90vw; /* Slightly smaller width for landscape */
+        right: 10%; /* Centered with moderate margin */
+        padding: 14px;
+    }
+
+    .email-container {
+        bottom: 20px;
+        right: 20px;
+    }
+}
+@media (max-width: 480px) {
+    .email-form {
+        width: 90vw; /* Adjust width to occupy 90% of the viewport width */
+        right: 2vw; /* Centered with a smaller margin */
+        padding: 14px; /* Adjust padding for smaller screens */
+    }
+
+    .email-container {
+        bottom: 20px; /* Adjust positioning for smaller screens */
+        right: 10px; /* Slightly smaller margin on the right */
+    }
+}
+
+/* Large Tablets and Smaller Laptops */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .email-form {
+        width: 90vw; /* Fixed width for tablets */
+        padding: 16px;
+    }
+
+    .email-container {
+        bottom: 25px;
+        right: 25px;
+    }
+}
+
+/* Desktop and Larger Screens */
+@media (min-width: 1025px) {
+    .email-form {
+        width: 500px; /* Fixed width for larger screens */
+    }
+
+    .email-container {
+        bottom: 30px;
+        right: 30px;
+    }
+}
+
+/* Animation */
+@keyframes slide-in {
+    from {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-out {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+}
+
+
 /* Top Bar */
 .top-bar {
     background-color: #DCD7C9;

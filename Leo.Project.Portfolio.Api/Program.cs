@@ -19,16 +19,7 @@ namespace Leo.Project.Portfolio.Api
 
             // Add services to the container.
             builder.Services.AddControllers();
-
-            // Enable CORS to allow your Blazor client (localhost:7275)
-            //builder.Services.AddCors(options =>
-            //{
-            //    options.AddPolicy("AllowBlazor",
-            //        builder => builder.WithOrigins("https://localhost:7275")
-            //                          .AllowAnyMethod()
-            //                          .AllowAnyHeader());
-            //});
-
+ 
             var env = builder.Environment;
 
             builder.Services.AddCors(options =>
@@ -45,7 +36,7 @@ namespace Leo.Project.Portfolio.Api
                 {
                     // Production environment CORS
                     options.AddPolicy("AllowBlazor",
-                        policy => policy.WithOrigins("https://leoganas-developer.com/") // Production origin
+                        policy => policy.WithOrigins("https://leoganas-developer.com") // Production origin
                                         .AllowAnyMethod()
                                         .AllowAnyHeader());
                 }
