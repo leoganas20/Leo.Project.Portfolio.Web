@@ -56,7 +56,12 @@ public class HomeBase : ComponentPageBase
 
         if (!string.IsNullOrEmpty(res))
         {
-            snackbar.Add("Email Sent!", Severity.Success);
+            snackbar.Add("Email Sent", Severity.Success, config =>
+            {
+                config.RequireInteraction = true;
+                config.ShowCloseIcon = true;
+                
+            });
 
         }
 
