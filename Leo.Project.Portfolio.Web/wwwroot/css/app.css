@@ -139,7 +139,7 @@ ul {
 @media (max-width: 480px) {
     .email-form {
         width: 90vw; /* Adjust width to occupy 90% of the viewport width */
-        right: 2vw; /* Centered with a smaller margin */
+        right: -2vw; /* Centered with a smaller margin */
         padding: 14px; /* Adjust padding for smaller screens */
     }
 
