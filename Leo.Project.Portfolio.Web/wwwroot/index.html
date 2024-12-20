@@ -13,15 +13,17 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
     <script src="downloadCV.js"></script>
+    
 </head>
 
 <body>
+    
     <div id="app">
-        <!--<svg class="loading-progress">
-            <circle r="40%" cx="50%" cy="50%" />
-            <circle r="40%" cx="50%" cy="50%" />
-        </svg>-->
-        <div class="loading-progress-text"></div>
+        <div class="container">
+            <div class="container-loader">
+                <div class="loader"></div>
+            </div>
+        </div>
     </div>
 
     <div id="blazor-error-ui">
@@ -31,16 +33,7 @@
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="_content/MudBlazor/MudBlazor.min.js"></script>
-    <!--<script>
-        document.addEventListener("contextmenu", function (event) {
-            event.preventDefault();
-        });
-        document.addEventListener("keydown", function (event) {
-            if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I")) {
-                event.preventDefault();
-            }
-        });
-    </script>-->
+    
 </body>
 
 

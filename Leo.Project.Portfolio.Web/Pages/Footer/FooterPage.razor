@@ -1,6 +1,38 @@
-﻿<footer class="footer">
+﻿@inject IJSRuntime JSRuntime
+
+<footer class="footer">
     <div class="container">
         <p class="m-0">&copy; @(DateTime.Now.Year) LG Dev Software. All Rights Reserved.</p>
         <p>Powered by Microsoft Blazor & MudBlazor.</p>
+        <p class="mb-1">Contact me</p>
+        <div class="d-flex justify-content-center">
+            <div class="icon-container d-flex">
+                <img @onclick="@(() => OnRedirect("https://www.linkedin.com/in/leo-ganas-468b50212/"))" src="/images/icons/icons8-linkedin-logo-30.png" width="30" style="object-fit:contain" />
+                <img @onclick="@(() => OnRedirect("https://www.upwork.com/freelancers/~016297b0547fe38cce?mp_source=share"))" src="/images/icons/icons8-upwork-30.png" width="30" style="object-fit:contain" />
+                <img @onclick="@(() => OnRedirect("https://wa.me/+639161452948"))" src="/images/icons/icons8-whatsapp-30.png" width="30" style="object-fit:contain" />
+                <img @onclick="@(() => OnRedirect("https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSGKnGfxbxVDpCxhtFWHfPHfvTPqJmWTrtxMmcHFvBthwHQwGKXBSzzVggMvzkNstFBQfBbc"))" src="/images/icons/icons8-gmail-logo-30.png" width="30" style="object-fit:contain" />
+            </div>
+        </div>
+
     </div>
 </footer>
+
+<style>
+    .icon-container img {
+        margin: 0 10px;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+    }
+
+    .icon-container img:hover {
+        transform: scale(1.2);
+    }
+</style>
+
+@code {
+
+    void OnRedirect(string url)
+    {
+        JSRuntime.InvokeVoidAsync("window.open", url, "_blank");
+    }
+}

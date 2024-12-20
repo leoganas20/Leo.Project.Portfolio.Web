@@ -21,11 +21,7 @@ public class HomeBase : ComponentPageBase
     
     protected async override Task OnInitializedAsync()
     {
-        IsVisible = true;
-
-        await Task.Delay(3000);
-
-        IsVisible = false;
+        //User for onload
     }
 
     public void ToggleFormVisibility()

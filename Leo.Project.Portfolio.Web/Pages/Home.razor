@@ -20,7 +20,9 @@
     <Leo.Project.Portfolio.Web.Pages.Skills.SkillsPage />
     <!-- Portfolio Gallery -->
     <GalleryPage />
-    <Leo.Project.Portfolio.Web.Pages.Contact.ContactPage />
+
+    @* <Leo.Project.Portfolio.Web.Pages.Contact.ContactPage /> *@
+
     <!-- Footer -->
     <FooterPage />
    
@@ -38,7 +40,7 @@
             <MudOverlay @bind-Visible="IsFormVisible" DarkBackground AutoClose="true" OnClosed="OnOverlayClosed" />
             <MudPaper Class="email-form">
                 <MudForm @ref="form" @bind-IsValid="@ISuccess" @bind-Errors="@FormErrors" >
-                    <MudTextField  T="string" @bind-Value="EmailForm.SenderEmail" Label="Email" Clearable="true"
+                    <MudTextField T="string" @bind-Value="EmailForm.SenderEmail" Label="From" AdornmentAriaLabel="your-email@gmail.com" Clearable="true"
                                   Required="true" RequiredError="Email is required!"
                                   Validation="@(new EmailAddressAttribute() {ErrorMessage = "The email address is invalid"})"
                                   Variant="Variant.Outlined" />
