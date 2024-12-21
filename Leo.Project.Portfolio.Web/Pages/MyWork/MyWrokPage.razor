@@ -1,9 +1,10 @@
 ﻿@using Leo.Project.Portfolio.Web.Pages.MyWork.Model;
 
 
-<section id="my-work">
+<section id="my-work" class="my-work">
     <div class="container" style="margin-top: 100px;">
-        <MudCard Elevation="3">
+        <h2>My Work</h2>
+        <MudCard Elevation="0">
             <MudCardContent Class="d-flex justify-content-center">
                 <MudGrid>
                     <MudItem xs="12" sm="12" lg="6" md="12">
@@ -28,7 +29,7 @@
                                     <MudIcon Icon="@Icons.Material.Filled.Smartphone" Size="Size.Large" Color="Color.Primary" />
                                     <MudText Typo="Typo.h6">Mobile Development</MudText>
                                     <MudText Typo="Typo.subtitle1">
-                                        I develop mobile solutions for site inspections, enabling field agents to capture geolocated photos and data offline. Once online, the data is automatically synced to the server for processing
+                                        I develop mobile solutions for site inspections, enabling field agents to capture geolocated photos and data offline. Once online, the data is automatically synced to the server for processing.
                                     </MudText>
                                 </div>
                             </div>
@@ -182,6 +183,9 @@
                  </MudGrid>
             </MudCardContent>
         </MudCard>
+      <div class="d-flex justify-content-center mt-5">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary">View more</MudButton>
+      </div>
     </div>
 </section>
 @code {
