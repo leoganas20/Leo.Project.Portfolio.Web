@@ -608,7 +608,12 @@ ul {
     }
 }
 
-@media (max-width: 1279px) and (min-width: 782px) {
+@media (max-width: 1471px) and (min-width: 782px) {
+
+    .summar-project {
+        display: flex;
+        justify-content: center;
+    }
     .project {
         display: flex;
         justify-content: center;
@@ -618,6 +623,7 @@ ul {
         margin-top: 50px;
     }
 }
+ 
     @media (max-width: 480px) {
     .portfolio-items {
         grid-template-columns: 1fr;

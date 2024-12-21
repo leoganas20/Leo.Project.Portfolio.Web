@@ -6,125 +6,126 @@
         <h2>My Work</h2>
         <MudCard Elevation="0">
             <MudCardContent Class="d-flex justify-content-center">
-                <MudItem xs="12" sm="12" lg="6" md="12" Class="d-flex">
-                    <div class="row" style="margin-right: 50px;">
-                        <div class="col-12">
-                            <MudText Typo="Typo.h6" Style="font-weight: bolder">Multi Platform Development</MudText>
-                            <MudText Typo="Typo.h5" Style="font-weight: normal" Color="Color.Dark">Responsive Web App & Native Mobile App</MudText>
-                            <MudText Typo="Typo.subtitle1">
-                                With 4+ years of experience in Blazor and .NET, In this project I specialize in developing infrastructure monitoring and inspection systems. My focus is on capturing real-time data, including photos, GPS geolocation, and offline support, enabling seamless integration between mobile and web platforms for monitoring and reporting.
-                            </MudText>
-                        </div>
-                        <div class="col-12 d-flex justify-content-between mt-5 gap-5">
-
-                            <MudGrid>
-                                <MudItem xs="12" sm="12" lg="6" md="6">
-                                    <div class="web-notes">
-                                        <MudIcon Icon="@Icons.Material.Filled.Web" Size="Size.Large" Color="Color.Primary" />
-                                        <MudText Typo="Typo.h6">Web Development</MudText>
-                                        <MudText Typo="Typo.subtitle1">
-                                            I’ve built intuitive dashboards for web-based infrastructure management, allowing administrators to monitor inspection data, track site locations, and generate reports.
-                                        </MudText>
-                                    </div>
-                                </MudItem>
-                                <MudItem xs="12" sm="12" lg="6" md="6">
-                                    <div class="mobile-notes">
-                                        <MudIcon Icon="@Icons.Material.Filled.Smartphone" Size="Size.Large" Color="Color.Primary" />
-                                        <MudText Typo="Typo.h6">Mobile Development</MudText>
-                                        <MudText Typo="Typo.subtitle1">
-                                            I develop mobile solutions for site inspections, enabling field agents to capture geolocated photos and data offline. Once online, the data is automatically synced to the server for processing.
-                                        </MudText>
-                                    </div>
-                                </MudItem>
-                            </MudGrid>
-                        </div>
-                    </div>
-                </MudItem>
-                <MudItem Class="project" xs="12" sm="12" lg="6" md="12">
-                    <div class="web-section">
-
-                        <MudAppBar Style="background-color: #131a1c; height: 50px; z-index:0; border-radius: 10px;" Fixed="false" Dense="true" Elevation="0">
-                            <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" Size="Size.Small" />
-                            <MudSpacer />
-                            <MudBadge Color="Color.Success" Overlap="true" Bordered="true">
-                                <MudAvatar Size="Size.Small">
-                                    <MudIconButton Icon="@Icons.Material.Filled.Person" Color="Color.Inherit" Size="Size.Small" />
-                                </MudAvatar>
-                            </MudBadge>
-                            @* <MudIconButton Icon="@Icons.Custom.Brands.Apple" Color="Color.Inherit" Size="Size.Small" /> *@
-                        </MudAppBar>
-                        <div class="container mt-3">
-                            <div class="row gap-3">
-                                <div class="col">
-                                    <MudCard Style="background-color: #2C3639; color: white; width:350px" Outlined="true">
-
-                                        <div class="d-flex justify-content-between">
-                                            <MudCardContent Style="height: 100px; padding: 10px;">
-                                                <MudText Typo="Typo.caption">Total Property :</MudText>
-                                                <MudText Typo="Typo.h4" Class="mt-5">12,339</MudText>
-                                            </MudCardContent>
-                                            <MudChart Class="chart-text" ChartType="ChartType.Donut" LegendPosition="Position.Start" Width="100px" Height="100px"
-                                                      InputData="@data" InputLabels="@labels">
-                                            </MudChart>
-                                        </div>
-                                    </MudCard>
-                                </div>
-                                <div class="col">
-                                </div>
-
+               <MudGrid Class="element-grid" Style="width:100%">
+                    <MudItem xs="12" sm="12" lg="6" md="12"  Class="summar-project">
+                        <div class="row">
+                            <div class="col-12">
+                                <MudText Typo="Typo.h6" Style="font-weight: bolder">Multi Platform Development</MudText>
+                                <MudText Typo="Typo.h5" Style="font-weight: normal" Color="Color.Dark">Responsive Web App & Native Mobile App</MudText>
+                                <MudText Typo="Typo.subtitle1">
+                                    With 4+ years of experience in Blazor and .NET, In this project I specialize in developing infrastructure monitoring and inspection systems. My focus is on capturing real-time data, including photos, GPS geolocation, and offline support, enabling seamless integration between mobile and web platforms for monitoring and reporting.
+                                </MudText>
                             </div>
-                            <hr style="color: white" />
-                            <MudDataGrid Class="grid-no-scroll" Height="200px" Items="@InspectionRecords.Take(4)" Hover="true" Dense="true" Striped="true" Bordered="true">
-                                <Columns>
-                                    <PropertyColumn Property="x => x.AssetType" Title="Type" Style="width: 80px;" />
-                                    <PropertyColumn Property="x => x.ConditionRating" Style="width: 100px;">
-                                        <CellTemplate>
-                                            <MudRating SelectedValue="3" Size="Size.Small" />
-                                        </CellTemplate>
-                                    </PropertyColumn>
-                                    <PropertyColumn Property="x => x.Defects" Style="width: 100px;" />
-                                    <PropertyColumn Property="x => x.InspectionDate.ToShortDateString()" Style="width: 120px;" />
-                                    <PropertyColumn Property="x => x.Status" Title="Molar mass" Style="width: 100px;" />
-                                </Columns>
-                            </MudDataGrid>
+                            <div class="col-12 d-flex justify-content-between mt-5 gap-5">
+
+                                <MudGrid>
+                                    <MudItem xs="12" sm="12" lg="6" md="6">
+                                        <div class="web-notes">
+                                            <MudIcon Icon="@Icons.Material.Filled.Web" Size="Size.Large" Color="Color.Primary" />
+                                            <MudText Typo="Typo.h6">Web Development</MudText>
+                                            <MudText Typo="Typo.subtitle1">
+                                                I’ve built intuitive dashboards for web-based infrastructure management, allowing administrators to monitor inspection data, track site locations, and generate reports.
+                                            </MudText>
+                                        </div>
+                                    </MudItem>
+                                    <MudItem xs="12" sm="12" lg="6" md="6">
+                                        <div class="mobile-notes">
+                                            <MudIcon Icon="@Icons.Material.Filled.Smartphone" Size="Size.Large" Color="Color.Primary" />
+                                            <MudText Typo="Typo.h6">Mobile Development</MudText>
+                                            <MudText Typo="Typo.subtitle1">
+                                                I develop mobile solutions for site inspections, enabling field agents to capture geolocated photos and data offline. Once online, the data is automatically synced to the server for processing.
+                                            </MudText>
+                                        </div>
+                                    </MudItem>
+                                </MudGrid>
+                            </div>
                         </div>
-                        <div class="mobile-container">
-                            <div class="mobile-section">
-                                <div class="top-section d-flex justify-content-between align-content-center">
-                                    <p style="font-size:14px; margin-top: 4px; margin-bottom: 0px; color: white">@DateTime.Now.ToString("hh:mm tt")</p>
-                                    <div class="network-section">
-                                        <!-- First SVG -->
-                                        <svg style="width:18px" class="mud-icon-root mud-svg-icon mud-icon-size-medium" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="img">
-                                            <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                            <path d="M18.5 4c.83 0 1.5.67 1.5 1.5v13c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5v-13c0-.83.67-1.5 1.5-1.5zm-12 10c.83 0 1.5.67 1.5 1.5v3c0 .83-.67 1.5-1.5 1.5S5 19.33 5 18.5v-3c0-.83.67-1.5 1.5-1.5zm6-5c.83 0 1.5.67 1.5 1.5v8c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5v-8c0-.83.67-1.5 1.5-1.5z" fill="#ffffff"></path>
-                                        </svg>
+                    </MudItem>
+                    <MudItem Class="project" xs="12" sm="12" lg="6"  md="12">
+                        <div class="web-section">
 
-                                        <!-- Second SVG -->
-                                        <svg style="width:18px" class="mud-icon-root mud-svg-icon mud-icon-size-medium" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="img">
-                                            <path d="M0 0h24v24H0V0zm0 0h24v24H0V0z" fill="none"></path>
-                                            <path d="M2.06 10.06c.51.51 1.32.56 1.87.1 4.67-3.84 11.45-3.84 16.13-.01.56.46 1.38.42 1.89-.09.59-.59.55-1.57-.1-2.1-5.71-4.67-13.97-4.67-19.69 0-.65.52-.7 1.5-.1 2.1zm7.76 7.76l1.47 1.47c.39.39 1.02.39 1.41 0l1.47-1.47c.47-.47.37-1.28-.23-1.59-1.22-.63-2.68-.63-3.91 0-.57.31-.68 1.12-.21 1.59zm-3.73-3.73c.49.49 1.26.54 1.83.13 2.44-1.73 5.72-1.73 8.16 0 .57.4 1.34.36 1.83-.13l.01-.01c.6-.6.56-1.62-.13-2.11-3.44-2.49-8.13-2.49-11.58 0-.69.5-.73 1.51-.12 2.12z" fill="#ffffff"></path>
-                                        </svg>
+                            <MudAppBar Style="background-color: #131a1c; height: 50px; z-index:0; border-radius: 10px;" Fixed="false" Dense="true" Elevation="0">
+                                <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" Size="Size.Small" />
+                                <MudSpacer />
+                                <MudBadge Color="Color.Success" Overlap="true" Bordered="true">
+                                    <MudAvatar Size="Size.Small">
+                                        <MudIconButton Icon="@Icons.Material.Filled.Person" Color="Color.Inherit" Size="Size.Small" />
+                                    </MudAvatar>
+                                </MudBadge>
+                                @* <MudIconButton Icon="@Icons.Custom.Brands.Apple" Color="Color.Inherit" Size="Size.Small" /> *@
+                            </MudAppBar>
+                            <div class="container mt-3">
+                                <div class="row gap-3">
+                                    <div class="col">
+                                        <MudCard Style="background-color: #2C3639; color: white; width:350px" Outlined="true">
 
-                                        <!-- Third SVG -->
-                                        <svg style="width:18px" class="mud-icon-root mud-svg-icon mud-icon-size-medium" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="img">
-                                            <path d="M0 0h24v24H0V0z" fill="none"></path>
-                                            <path d="M15.67 4H14V3c0-.55-.45-1-1-1h-2c-.55 0-1 .45-1 1v1H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.34 22h7.32c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z" fill="#ffffff"></path>
-                                        </svg>
-
+                                            <div class="d-flex justify-content-between">
+                                                <MudCardContent Style="height: 100px; padding: 10px;">
+                                                    <MudText Typo="Typo.caption">Total Property :</MudText>
+                                                    <MudText Typo="Typo.h4" Class="mt-5">12,339</MudText>
+                                                </MudCardContent>
+                                                <MudChart Class="chart-text" ChartType="ChartType.Donut" LegendPosition="Position.Start" Width="100px" Height="100px"
+                                                          InputData="@data" InputLabels="@labels">
+                                                </MudChart>
+                                            </div>
+                                        </MudCard>
                                     </div>
+                                    <div class="col">
+                                    </div>
+
                                 </div>
-                                <div class="content">
-                                    <MudAppBar Style="background-color: #131a1c; height: 50px;" Fixed="false" Dense="true" Elevation="0">
-                                        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" Size="Size.Small" />
-                                        <MudSpacer />
-                                        <MudBadge Color="Color.Success" Overlap="true" Bordered="true">
-                                            <MudAvatar Size="Size.Small">
-                                                <MudIconButton Icon="@Icons.Material.Filled.Person" Color="Color.Inherit" Size="Size.Small" />
-                                            </MudAvatar>
-                                        </MudBadge>
-                                        @* <MudIconButton Icon="@Icons.Custom.Brands.Apple" Color="Color.Inherit" Size="Size.Small" /> *@
-                                    </MudAppBar>
-                                    @*   <MudDrawer Style="background-color: #2C3639; color: white;" Open="false" Elevation="1" Fixed="true" Width="160px">
+                                <hr style="color: white" />
+                                <MudDataGrid Class="grid-no-scroll" Height="200px" Items="@InspectionRecords.Take(4)" Hover="true" Dense="true" Striped="true" Bordered="true">
+                                    <Columns>
+                                        <PropertyColumn Property="x => x.AssetType" Title="Type" Style="width: 80px;" />
+                                        <PropertyColumn Property="x => x.ConditionRating" Style="width: 100px;">
+                                            <CellTemplate>
+                                                <MudRating SelectedValue="3" Size="Size.Small" />
+                                            </CellTemplate>
+                                        </PropertyColumn>
+                                        <PropertyColumn Property="x => x.Defects" Style="width: 100px;" />
+                                        <PropertyColumn Property="x => x.InspectionDate.ToShortDateString()" Style="width: 120px;" />
+                                        <PropertyColumn Property="x => x.Status" Title="Molar mass" Style="width: 100px;" />
+                                    </Columns>
+                                </MudDataGrid>
+                            </div>
+                            <div class="mobile-container">
+                                <div class="mobile-section">
+                                    <div class="top-section d-flex justify-content-between align-content-center">
+                                        <p style="font-size:14px; margin-top: 4px; margin-bottom: 0px; color: white">@DateTime.Now.ToString("hh:mm tt")</p>
+                                        <div class="network-section">
+                                            <!-- First SVG -->
+                                            <svg style="width:18px" class="mud-icon-root mud-svg-icon mud-icon-size-medium" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="img">
+                                                <path d="M0 0h24v24H0V0z" fill="none"></path>
+                                                <path d="M18.5 4c.83 0 1.5.67 1.5 1.5v13c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5v-13c0-.83.67-1.5 1.5-1.5zm-12 10c.83 0 1.5.67 1.5 1.5v3c0 .83-.67 1.5-1.5 1.5S5 19.33 5 18.5v-3c0-.83.67-1.5 1.5-1.5zm6-5c.83 0 1.5.67 1.5 1.5v8c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5v-8c0-.83.67-1.5 1.5-1.5z" fill="#ffffff"></path>
+                                            </svg>
+
+                                            <!-- Second SVG -->
+                                            <svg style="width:18px" class="mud-icon-root mud-svg-icon mud-icon-size-medium" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="img">
+                                                <path d="M0 0h24v24H0V0zm0 0h24v24H0V0z" fill="none"></path>
+                                                <path d="M2.06 10.06c.51.51 1.32.56 1.87.1 4.67-3.84 11.45-3.84 16.13-.01.56.46 1.38.42 1.89-.09.59-.59.55-1.57-.1-2.1-5.71-4.67-13.97-4.67-19.69 0-.65.52-.7 1.5-.1 2.1zm7.76 7.76l1.47 1.47c.39.39 1.02.39 1.41 0l1.47-1.47c.47-.47.37-1.28-.23-1.59-1.22-.63-2.68-.63-3.91 0-.57.31-.68 1.12-.21 1.59zm-3.73-3.73c.49.49 1.26.54 1.83.13 2.44-1.73 5.72-1.73 8.16 0 .57.4 1.34.36 1.83-.13l.01-.01c.6-.6.56-1.62-.13-2.11-3.44-2.49-8.13-2.49-11.58 0-.69.5-.73 1.51-.12 2.12z" fill="#ffffff"></path>
+                                            </svg>
+
+                                            <!-- Third SVG -->
+                                            <svg style="width:18px" class="mud-icon-root mud-svg-icon mud-icon-size-medium" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="img">
+                                                <path d="M0 0h24v24H0V0z" fill="none"></path>
+                                                <path d="M15.67 4H14V3c0-.55-.45-1-1-1h-2c-.55 0-1 .45-1 1v1H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.34 22h7.32c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z" fill="#ffffff"></path>
+                                            </svg>
+
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <MudAppBar Style="background-color: #131a1c; height: 50px;" Fixed="false" Dense="true" Elevation="0">
+                                            <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" Size="Size.Small" />
+                                            <MudSpacer />
+                                            <MudBadge Color="Color.Success" Overlap="true" Bordered="true">
+                                                <MudAvatar Size="Size.Small">
+                                                    <MudIconButton Icon="@Icons.Material.Filled.Person" Color="Color.Inherit" Size="Size.Small" />
+                                                </MudAvatar>
+                                            </MudBadge>
+                                            @* <MudIconButton Icon="@Icons.Custom.Brands.Apple" Color="Color.Inherit" Size="Size.Small" /> *@
+                                        </MudAppBar>
+                                        @*   <MudDrawer Style="background-color: #2C3639; color: white;" Open="false" Elevation="1" Fixed="true" Width="160px">
                                             <MudDrawerHeader>
                                                 <MudText Typo="Typo.h6">My App</MudText>
                                             </MudDrawerHeader>
@@ -134,57 +135,58 @@
                                                 <MudNavLink OnClick="@(() => GoTo("Settings/Profile"))">Profile</MudNavLink>
                                             </MudNavMenu>
                                         </MudDrawer> *@
-                                    <MudMainContent Class="pt-2 px-4">
-                                        <MudCard Outlined="true" Style="background-color:white;">
-                                            <MudCardContent Class="banner-container" Style="color: white; height: 110px;">
-                                                <div class="row p-0 custom-background">
-                                                    <div class="col-8">
-                                                        <div class="row p-3">
-                                                            <h4 class="mb-3 firstname-text">Hi Inspector!</h4>
-                                                            <h4 class="mb-0 remaining-text">Remaining Task :</h4>
-                                                            <p class="task-text m-0">14</p>
+                                        <MudMainContent Class="pt-2 px-4">
+                                            <MudCard Outlined="true" Style="background-color:white;">
+                                                <MudCardContent Class="banner-container" Style="color: white; height: 110px;">
+                                                    <div class="row p-0 custom-background">
+                                                        <div class="col-8">
+                                                            <div class="row p-3">
+                                                                <h4 class="mb-3 firstname-text">Hi Inspector!</h4>
+                                                                <h4 class="mb-0 remaining-text">Remaining Task :</h4>
+                                                                <p class="task-text m-0">14</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
                                                         </div>
                                                     </div>
-                                                    <div class="col-4">
+                                                </MudCardContent>
+                                            </MudCard>
+                                            @*  <hr style="color: white"/> *@
+                                            <MudCard Outlined="true" Style="background-color: #2C3639; margin-top: 30px;">
+                                                <MudCardContent Class="banner-container px-2 py-1" Style="color: white; height: auto;">
+                                                    <div class="d-flex justify-content-between">
+                                                        <MudText Typo="Typo.caption" Class="fw-bolder pt-2">Building #EB23NS</MudText>
+                                                        <MudIconButton Class="pt-1" Icon="@Icons.Material.Filled.EditNote" Color="Color.Info" Style="width: 10px; padding-top:0; padding-right:8px;" />
                                                     </div>
-                                                </div>
-                                            </MudCardContent>
-                                        </MudCard>
-                                        @*  <hr style="color: white"/> *@
-                                        <MudCard Outlined="true" Style="background-color: #2C3639; margin-top: 30px;">
-                                            <MudCardContent Class="banner-container px-2 py-1" Style="color: white; height: auto;">
-                                                <div class="d-flex justify-content-between">
-                                                    <MudText Typo="Typo.caption" Class="fw-bolder pt-2">Building #EB23NS</MudText>
-                                                    <MudIconButton Class="pt-1" Icon="@Icons.Material.Filled.EditNote" Color="Color.Info" Style="width: 10px; padding-top:0; padding-right:8px;" />
-                                                </div>
-                                                <div class="d-flex">
-                                                    <MudRating SelectedValue="2" Size="Size.Small" />
-                                                </div>
-                                                <p class="fw-normal mt-1" style="font-size: 11px;">Infrastructure needs daily updates for liquidation purposes.</p>
-                                                <hr style="color:white" />
-                                                <MudText Typo="Typo.caption" Class="fw-bolder p-0">Property Condition</MudText>
-                                                <MudChipSet T="Color" CheckMark>
-                                                    <MudChip Size="Size.Small" Text="purple" Icon="@Icons.Material.Filled.Check" Color="Color.Success" Value="@Color.Primary">Good</MudChip>
-                                                    <MudChip Size="Size.Small" Text="pink" Color="Color.Dark" Value="@Color.Secondary">Minor repair</MudChip>
-                                                    <MudChip Size="Size.Small" Text="green" Color="Color.Dark" Value="@Color.Success">Major repair</MudChip>
-                                                    <MudChip Size="Size.Small" Text="orange" Color="Color.Dark" Value="@Color.Warning">Warning</MudChip>
-                                                    <MudChip Size="Size.Small" Text="red" Color="Color.Dark" Value="@Color.Error">Bad</MudChip>
-                                                </MudChipSet>
+                                                    <div class="d-flex">
+                                                        <MudRating SelectedValue="2" Size="Size.Small" />
+                                                    </div>
+                                                    <p class="fw-normal mt-1" style="font-size: 11px;">Infrastructure needs daily updates for liquidation purposes.</p>
+                                                    <hr style="color:white" />
+                                                    <MudText Typo="Typo.caption" Class="fw-bolder p-0">Property Condition</MudText>
+                                                    <MudChipSet T="Color" CheckMark>
+                                                        <MudChip Size="Size.Small" Text="purple" Icon="@Icons.Material.Filled.Check" Color="Color.Success" Value="@Color.Primary">Good</MudChip>
+                                                        <MudChip Size="Size.Small" Text="pink" Color="Color.Dark" Value="@Color.Secondary">Minor repair</MudChip>
+                                                        <MudChip Size="Size.Small" Text="green" Color="Color.Dark" Value="@Color.Success">Major repair</MudChip>
+                                                        <MudChip Size="Size.Small" Text="orange" Color="Color.Dark" Value="@Color.Warning">Warning</MudChip>
+                                                        <MudChip Size="Size.Small" Text="red" Color="Color.Dark" Value="@Color.Error">Bad</MudChip>
+                                                    </MudChipSet>
 
-                                            </MudCardContent>
+                                                </MudCardContent>
 
-                                        </MudCard>
-                                    </MudMainContent>
-                                </div>
-                                <div style="margin-top:-20px; height: 100px; width: 100%;  background-color: rgba(0, 0, 32, 0.5); filter: blur(10px);">
-                                    <!-- Your footer content here -->
+                                            </MudCard>
+                                        </MudMainContent>
+                                    </div>
+                                    <div style="margin-top:-20px; height: 100px; width: 100%;  background-color: rgba(0, 0, 32, 0.5); filter: blur(10px);">
+                                        <!-- Your footer content here -->
+                                    </div>
+
                                 </div>
 
                             </div>
-
                         </div>
-                    </div>
-                </MudItem>
+                    </MudItem>
+               </MudGrid>
             </MudCardContent>
         </MudCard>
       <div class="d-flex justify-content-center mt-5">
