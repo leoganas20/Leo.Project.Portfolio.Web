@@ -14,7 +14,7 @@
         {
              <div class="btn-group">
 
-                <MudChip Style="background-color: #A27B5C; color: white" CloseIcon="@Icons.Material.Filled.Download" T="string" Class="mx-5" Disabled="@_processing" OnClick="ProcessSomething" Variant="Variant.Filled">
+                <MudChip Style="background-color: #01204E; color: white" CloseIcon="@Icons.Material.Filled.Download" T="string" Class="mx-5" Disabled="@_processing" OnClick="ProcessSomething" Variant="Variant.Filled">
                     @if (_processing)
                     {
                         <MudText Class="mx-2">Processing</MudText>
@@ -38,13 +38,13 @@
             <nav>
                 <ul class="nav-list">
                     <li><a href="#hero-section">Home</a></li>
-                    <li><a href="#about">About</a></li>
+                  @*   <li><a href="#about">About</a></li> *@
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#portfolio-gallery">Experience</a></li>
                    @*  <li><a href="/services">Services</a></li> *@
                     <li><a href="#contact">Contact</a></li>
                     <li class="chip-item">
-                        <MudChip Style="background-color: #A27B5C; color: white"
+                        <MudChip Style="background-color: #133E87; color: white"
                                  CloseIcon="@Icons.Material.Filled.Download"
                                  T="string"
                                  Class="mx-5"
@@ -79,7 +79,7 @@
             <MudPaper Width="auto" Class="py-3">
                 <MudNavMenu Bordered="true" Color="Color.Dark">
                     <MudNavLink Style="color:black"  Href="#hero-section">Home</MudNavLink>
-                    <MudNavLink Href="#about">About</MudNavLink>
+                   @*  <MudNavLink Href="#about">About</MudNavLink> *@
                     <MudNavLink  Href="#skills">Skills</MudNavLink>
                     <MudNavLink Href="#portfolio-gallery" Disabled="false">Experience</MudNavLink>
                   @*   <MudNavGroup Title="Services" Expanded="@(_expanded)" @onclick="OnExpandMenu">

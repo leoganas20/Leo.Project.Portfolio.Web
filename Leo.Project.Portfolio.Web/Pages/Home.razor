@@ -61,7 +61,7 @@
                     <div class="actions">
                         @if (IsVisible)
                         {
-                            <MudButton OnClick="@(() => SendEmail(EmailForm))" Disabled="true" Variant="Variant.Filled"  Style="background-color: #A27B5C; color: white;">
+                            <MudButton OnClick="@(() => SendEmail(EmailForm))" Disabled="true" Variant="Variant.Filled" Style="background-color: #133E87; color: white;">
                                 <MudText Class="ms-2 mr-2">Processing</MudText>
                                 <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
 
@@ -69,7 +69,7 @@
                         }
                         else
                         {
-                           <MudButton OnClick="@(() => SendEmail(EmailForm))" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Send" Style="background-color: #A27B5C; color: white;">Send Email</MudButton>
+                            <MudButton OnClick="@(() => SendEmail(EmailForm))" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Send" Style="background-color: #133E87; color: white;">Send Email</MudButton>
 
                         }
                         
@@ -86,12 +86,12 @@
         color: var(--mud-palette-primary-text);
         --mud-ripple-color: var(--mud-palette-primary-text) !important;
         --mud-ripple-opacity: var(--mud-ripple-opacity-secondary) !important;
-        background-color: #A27B5C;
+        background-color: #133E87;
     }
 
     .mud-fab-primary:hover {
         
-        background-color: #694d37;
+        background-color: #153263;
     }
 
     .email-container .email-button .email-form .mud-icon-button {
