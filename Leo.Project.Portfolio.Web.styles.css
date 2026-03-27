@@ -13,7 +13,7 @@ main[b-ih5668b2s6] {
 }
 
 .content[b-ih5668b2s6] {
-    width: 100%;
+    width: 100% !important;
 }
 /* /Layout/NavMenu.razor.rz.scp.css */
 .navbar-toggler[b-nu5yhzn58f] {
