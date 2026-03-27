@@ -122,6 +122,9 @@
         border-radius: 6px;
         padding: 16px;
         transition: border-color 0.2s;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
     }
 
     .gh-service-card:hover {
@@ -136,8 +139,10 @@
 
     .gh-service-meta {
         display: flex;
+        flex-wrap: wrap;
         gap: 16px;
-        margin-top: 12px;
+        margin-top: auto;
+        padding-top: 16px;
     }
 
     .gh-meta-item {
