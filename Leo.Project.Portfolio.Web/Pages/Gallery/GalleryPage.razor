@@ -1,29 +1,30 @@
+@inject Leo.Project.Portfolio.Web.Services.ThemeService ThemeService
 <section id="portfolio-gallery" class="portfolio-gallery" style="padding: 100px 0; background-color: var(--gh-bg);">
     <div class="container">
         <div class="text-center mb-16">
             <MudText Typo="Typo.h6" Style="color: var(--gh-green-3); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;">Professional Impact</MudText>
-            <MudText Typo="Typo.h3" Style="font-weight: 800; color: #fff;">Work Experience</MudText>
+            <MudText Typo="Typo.h3" Style="font-weight: 800; color: var(--gh-text);">Work Experience</MudText>
         </div>
 
     <div class="modern-experience-list">
         <!-- Blackfort Section -->
-        <div class="exp-row">
+        <div class="exp-row reveal stagger-1">
             <div class="exp-logo-area">
-                <img src="blackfort-logo-black.webp" alt="Blackfort" class="large-exp-logo" style="filter: drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white) drop-shadow(1px -1px 0 white) drop-shadow(-1px 1px 0 white);" />
+                <img src="blackfort-logo-black.webp" alt="Blackfort" class="large-exp-logo" style="filter: @(ThemeService.IsDarkMode ? "drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white) drop-shadow(1px -1px 0 white) drop-shadow(-1px 1px 0 white)" : "drop-shadow(1px 1px 0 black) drop-shadow(-1px -1px 0 black) drop-shadow(1px -1px 0 black) drop-shadow(-1px 1px 0 black)");" />
             </div>
             <div class="exp-info-area">
                 <MudText Typo="Typo.h4" Class="exp-company">Blackfort Consulting</MudText>
                 <MudText Typo="Typo.body2" Class="exp-industry">Industry: Software Engineering & Cloud Solutions</MudText>
                 <MudText Typo="Typo.body1" Class="exp-description">
-                    Leading the technical architecture for diverse enterprise clients as a Full-Stack .NET Developer. Focused on building high-performance 
-                    distributed systems, complex mobile integrations, and real-time monitoring dashboards that bridge the gap 
-                    between physical infrastructure and digital management.
+                    Contributed as a key developer at Blackfort Consulting, primarily the developer of the native Mobile Application
+                    for infrastructure monitoring. Collaborated on the development of high-performance web-based dashboards, 
+                    ensuring seamless integration for real-time data tracking and offline support across multiple platforms.
                 </MudText>
             </div>
         </div>
 
         <!-- Provincial Gov Section -->
-        <div class="exp-row reverse">
+        <div class="exp-row reverse reveal stagger-2">
             <div class="exp-logo-area">
                 <img src="provincial misamis.png" alt="Provincial Gov" class="large-exp-logo" />
             </div>
@@ -31,7 +32,7 @@
                 <MudText Typo="Typo.h4" Class="exp-company">Provincial Gov. of Misamis Oriental</MudText>
                 <MudText Typo="Typo.body2" Class="exp-industry">Industry: Public Sector & Governance</MudText>
                 <MudText Typo="Typo.body1" Class="exp-description">
-                    Spearheaded the digital transformation of government services. Successfully implemented the Electronic 
+                    Implemented the digital transformation of government services. Integrated the Electronic 
                     Leave Application System and various citizen-facing portals that improved administrative efficiency 
                     across all provincial departments.
                 </MudText>
@@ -39,7 +40,7 @@
         </div>
         
         <!-- DSWD Section -->
-        <div class="exp-row">
+        <div class="exp-row reveal stagger-3">
             <div class="exp-logo-area">
                 <img src="DSWD-Logo-700x394.png" alt="DSWD" class="large-exp-logo" />
             </div>
@@ -55,9 +56,9 @@
         </div>
 
         <!-- SVI Section -->
-        <div class="exp-row reverse">
+        <div class="exp-row reverse reveal stagger-4">
             <div class="exp-logo-area">
-                <img src="W-SVI Logos_SVI Corporation.avif" alt="SVI" class="large-exp-logo" />
+                <img src="W-SVI Logos_SVI Corporation.avif" alt="SVI" class="large-exp-logo" style="filter: @(ThemeService.IsDarkMode ? "" : "drop-shadow(1px 1px 0 black) drop-shadow(-1px -1px 0 black) drop-shadow(1px -1px 0 black) drop-shadow(-1px 1px 0 black)");" />
             </div>
             <div class="exp-info-area">
                 <MudText Typo="Typo.h4" Class="exp-company">Software Venture International</MudText>
@@ -116,7 +117,7 @@
     }
 
     .exp-company {
-        color: #fff;
+        color: var(--gh-text);
         font-weight: 800 !important;
         margin-bottom: 8px !important;
         letter-spacing: -1px;
@@ -160,3 +161,15 @@
         }
     }
 </style>
+
+@code {
+    protected override void OnInitialized()
+    {
+        ThemeService.OnThemeChanged += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        ThemeService.OnThemeChanged -= StateHasChanged;
+    }
+}

@@ -1,4 +1,5 @@
 @inject IJSRuntime JSRuntime
+@inject Leo.Project.Portfolio.Web.Services.ThemeService ThemeService
 
 <footer id="contact" class="footer" style="background-color: var(--gh-canvas); border-top: 1px solid var(--gh-border); color: var(--gh-text-muted); padding: 40px 0; text-align: center;">
     <div class="container">
@@ -7,10 +8,10 @@
             <p style="font-size: 12px; opacity: 0.7;">Built with .NET Blazor & MudBlazor</p>
             
             <div class="icon-container d-flex mt-4">
-                <img @onclick="@(() => OnRedirect("https://www.linkedin.com/in/leo-ganas-468b50212/"))" src="/images/icons/icons8-linkedin-logo-30.png" width="24" style="object-fit:contain; filter: brightness(0) invert(1); opacity: 0.6;" />
-                <img @onclick="@(() => OnRedirect("https://www.upwork.com/freelancers/~016297b0547fe38cce?mp_source=share"))" src="/images/icons/icons8-upwork-30.png" width="24" style="object-fit:contain; filter: brightness(0) invert(1); opacity: 0.6;" />
-                <img @onclick="@(() => OnRedirect("https://wa.me/+639161452948"))" src="/images/icons/icons8-whatsapp-30.png" width="24" style="object-fit:contain; filter: brightness(0) invert(1); opacity: 0.6;" />
-                <img @onclick="@(() => OnRedirect("https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSGKnGfxbxVDpCxhtFWHfPHfvTPqJmWTrtxMmcHFvBthwHQwGKXBSzzVggMvzkNstFBQfBbc"))" src="/images/icons/icons8-gmail-logo-30.png" width="24" style="object-fit:contain; filter: brightness(0) invert(1); opacity: 0.6;" />
+                <img @onclick="@(() => OnRedirect("https://www.linkedin.com/in/leo-ganas-468b50212/"))" src="/images/icons/icons8-linkedin-logo-30.png" width="24" style="object-fit:contain; filter: @(ThemeService.IsDarkMode ? "brightness(0) invert(1)" : "brightness(0)"); opacity: 0.6;" />
+                <img @onclick="@(() => OnRedirect("https://www.upwork.com/freelancers/~016297b0547fe38cce?mp_source=share"))" src="/images/icons/icons8-upwork-30.png" width="24" style="object-fit:contain; filter: @(ThemeService.IsDarkMode ? "brightness(0) invert(1)" : "brightness(0)"); opacity: 0.6;" />
+                <img @onclick="@(() => OnRedirect("https://wa.me/+639161452948"))" src="/images/icons/icons8-whatsapp-30.png" width="24" style="object-fit:contain; filter: @(ThemeService.IsDarkMode ? "brightness(0) invert(1)" : "brightness(0)"); opacity: 0.6;" />
+                <img @onclick="@(() => OnRedirect("https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSGKnGfxbxVDpCxhtFWHfPHfvTPqJmWTrtxMmcHFvBthwHQwGKXBSzzVggMvzkNstFBQfBbc"))" src="/images/icons/icons8-gmail-logo-30.png" width="24" style="object-fit:contain; filter: @(ThemeService.IsDarkMode ? "brightness(0) invert(1)" : "brightness(0)"); opacity: 0.6;" />
             </div>
         </div>
     </div>
@@ -29,9 +30,18 @@
 </style>
 
 @code {
+    protected override void OnInitialized()
+    {
+        ThemeService.OnThemeChanged += StateHasChanged;
+    }
 
     void OnRedirect(string url)
     {
         JSRuntime.InvokeVoidAsync("window.open", url, "_blank");
+    }
+
+    public void Dispose()
+    {
+        ThemeService.OnThemeChanged -= StateHasChanged;
     }
 }

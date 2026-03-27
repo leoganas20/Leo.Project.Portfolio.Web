@@ -60,7 +60,7 @@
     <div class="year-selector">
         @foreach (var year in _availableYears)
         {
-            <div class="year-item @(year == _currentYear ? "active" : "")" @onclick="() => SelectYear(year)">
+            <div class="year-item @(year == _currentYear ? "active" : "")">
                 @year
             </div>
         }

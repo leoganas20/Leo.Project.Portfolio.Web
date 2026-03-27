@@ -36,6 +36,7 @@ namespace Leo.Project.Portfolio.Web
             builder.Services.AddScoped<LogService>();   // Register the login service
 
             builder.Services.AddScoped<RequestEmailService>();
+            builder.Services.AddScoped<ThemeService>();
             builder.Services.AddMudServices();
             builder.Services.AddScoped<PortfolioApiService>();
             builder.Services.AddMudServices(config =>

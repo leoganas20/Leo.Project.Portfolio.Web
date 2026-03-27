@@ -2,7 +2,7 @@
 
 
 :root {
-    /* GitHub-inspired Colors */
+    /* GitHub-inspired Colors (Dark - Default) */
     --gh-bg: #0d1117;
     --gh-canvas: #161b22;
     --gh-border: #30363d;
@@ -11,12 +11,30 @@
     --gh-primary: #238636;
     --gh-primary-hover: #2ea043;
     
-    /* Green contribution scale */
+    /* Green contribution scale (Dark) */
     --gh-green-0: #161b22;
     --gh-green-1: #0e4429;
     --gh-green-2: #006d32;
     --gh-green-3: #26a641;
     --gh-green-4: #39d353;
+}
+
+[data-theme="light"] {
+    /* GitHub-inspired Colors (Light) */
+    --gh-bg: #ffffff;
+    --gh-canvas: #f6f8fa;
+    --gh-border: #d0d7de;
+    --gh-text: #1f2328;
+    --gh-text-muted: #656d76;
+    --gh-primary: #1f883d;
+    --gh-primary-hover: #1a7f37;
+    
+    /* Green contribution scale (Light) */
+    --gh-green-0: #ebedf0;
+    --gh-green-1: #9be9a8;
+    --gh-green-2: #40c463;
+    --gh-green-3: #30a14e;
+    --gh-green-4: #216e39;
 }
 
 /* Global styles */
@@ -64,7 +82,7 @@ ul {
     overflow: hidden;
     white-space: nowrap;
     color: #0000;
-    text-shadow: calc( 0*var(--w)) 0 #000,calc(-1*var(--w)) 0 #000,calc(-2*var(--w)) 0 #000,calc(-3*var(--w)) 0 #000,calc(-4*var(--w)) 0 #000, calc(-5*var(--w)) 0 #000,calc(-6*var(--w)) 0 #000,calc(-7*var(--w)) 0 #000,calc(-8*var(--w)) 0 #000,calc(-9*var(--w)) 0 #000;
+    text-shadow: calc( 0*var(--w)) 0 #fff,calc(-1*var(--w)) 0 #fff,calc(-2*var(--w)) 0 #fff,calc(-3*var(--w)) 0 #fff,calc(-4*var(--w)) 0 #fff, calc(-5*var(--w)) 0 #fff,calc(-6*var(--w)) 0 #fff,calc(-7*var(--w)) 0 #fff,calc(-8*var(--w)) 0 #fff,calc(-9*var(--w)) 0 #fff;
     animation: l20 2s infinite linear;
 }
 
@@ -74,11 +92,11 @@ ul {
 
 @keyframes l20 {
     9.09% {
-        text-shadow: calc( 0*var(--w)) -10px #000,calc(-1*var(--w)) 0 #000,calc(-2*var(--w)) 0 #000,calc(-3*var(--w)) 0 #000,calc(-4*var(--w)) 0 #000, calc(-5*var(--w)) 0 #000,calc(-6*var(--w)) 0 #000,calc(-7*var(--w)) 0 #000,calc(-8*var(--w)) 0 #000,calc(-9*var(--w)) 0 #000
+        text-shadow: calc( 0*var(--w)) -10px #fff,calc(-1*var(--w)) 0 #fff,calc(-2*var(--w)) 0 #fff,calc(-3*var(--w)) 0 #fff,calc(-4*var(--w)) 0 #fff, calc(-5*var(--w)) 0 #fff,calc(-6*var(--w)) 0 #fff,calc(-7*var(--w)) 0 #fff,calc(-8*var(--w)) 0 #fff,calc(-9*var(--w)) 0 #fff
     }
 
     18.18% {
-        text-shadow: calc( 0*var(--w)) 0 #000,calc(-1*var(--w)) -10px #000,calc(-2*var(--w)) 0 #000,calc(-3*var(--w)) 0 #000,calc(-4*var(--w)) 0 #000, calc(-5*var(--w)) 0 #000,calc(-6*var(--w)) 0 #000,calc(-7*var(--w)) 0 #000,calc(-8*var(--w)) 0 #000,calc(-9*var(--w)) 0 #000
+        text-shadow: calc( 0*var(--w)) 0 #fff,calc(-1*var(--w)) -10px #fff,calc(-2*var(--w)) 0 #fff,calc(-3*var(--w)) 0 #fff,calc(-4*var(--w)) 0 #fff, calc(-5*var(--w)) 0 #fff,calc(-6*var(--w)) 0 #fff,calc(-7*var(--w)) 0 #fff,calc(-8*var(--w)) 0 #fff,calc(-9*var(--w)) 0 #fff
     }
 
     27.27% {
@@ -292,15 +310,22 @@ ul {
 
 /* Top Bar */
 .top-bar {
-    background-color: #DCD7C9;
-    color: #2C3639;
+    background-color: var(--gh-bg);
+    color: var(--gh-text);
     padding: 15px 0;
     position: sticky;
     top: 0;
     z-index: 100;
     height: 60px;
+    width: 100%;
     display: flex;
-    justify-content: center;
+    border-bottom: 1px solid var(--gh-border);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
 }
 
     .top-bar .container {
@@ -549,3 +574,22 @@ p, span, div {
     }
 }
  
+
+/* Scroll Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform, opacity;
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Stagger delay classes for children */
+.reveal.stagger-1 { transition-delay: 0.1s; }
+.reveal.stagger-2 { transition-delay: 0.2s; }
+.reveal.stagger-3 { transition-delay: 0.3s; }
+.reveal.stagger-4 { transition-delay: 0.4s; }

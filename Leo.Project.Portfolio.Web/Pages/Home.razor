@@ -33,56 +33,56 @@
    
 </div>
 
-<div class="email-container">
-    <div class="email-button">
-        @if (!IsFormVisible)
-        {
-           // <MudButton Class="email-fab-button" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Email" Style="background-color: #A27B5C; color: white; height: 100px; box-sizing: border-box; border-radius: 50%" />
-            <MudFab Class="email-fab-button" Color="Color.Primary" OnClick="ToggleFormVisibility" StartIcon="@Icons.Material.Filled.Email" />
-        }
-        else
-        {
-            <MudOverlay @bind-Visible="IsFormVisible" DarkBackground AutoClose="true" OnClosed="OnOverlayClosed" />
-            <MudPaper Class="email-form">
-                <MudForm @ref="form" @bind-IsValid="@ISuccess" @bind-Errors="@FormErrors" >
-                    <MudTextField T="string" @bind-Value="EmailForm.SenderEmail" Label="From" AdornmentAriaLabel="your-email@gmail.com" Clearable="true"
-                                  Required="true" RequiredError="Email is required!"
-                                  Validation="@(new EmailAddressAttribute() {ErrorMessage = "The email address is invalid"})"
-                                  Variant="Variant.Outlined" />
-
-                    <MudTextField T="string" @bind-Value="EmailForm.Subject" Label="Subject" Clearable="true"
-                                  Lines="3"
-                                  Required="true" RequiredError="Subject is required!"
-                                  Variant="Variant.Outlined" />
-
-                    <MudTextField T="string" @bind-Value="EmailForm.Body" Label="Message" Clearable="true"
-                                  Lines="6"
-                                  Required="true" RequiredError="Message is required!"
-                                  Variant="Variant.Outlined" />
-
-                    <div class="actions">
-                        @if (IsVisible)
-                        {
-                            <MudButton OnClick="@(() => SendEmail(EmailForm))" Disabled="true" Variant="Variant.Filled" Style="background-color: #133E87; color: white;">
-                                <MudText Class="ms-2 mr-2">Processing</MudText>
-                                <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
-
-                            </MudButton>
-                        }
-                        else
-                        {
-                            <MudButton OnClick="@(() => SendEmail(EmailForm))" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Send" Style="background-color: #133E87; color: white;">Send Email</MudButton>
-
-                        }
-                        
-
-                        <MudButton Variant="Variant.Text" @onclick="ToggleFormVisibility">Cancel</MudButton>
-                    </div>
-                </MudForm>
-            </MudPaper>
-        }
-    </div>
-</div>
+@* <div class="email-container"> *@
+@*     <div class="email-button"> *@
+@*         @if (!IsFormVisible) *@
+@*         { *@
+@*            // <MudButton Class="email-fab-button" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Email" Style="background-color: #A27B5C; color: white; height: 100px; box-sizing: border-box; border-radius: 50%" /> *@
+@*             <MudFab Class="email-fab-button" Color="Color.Primary" OnClick="ToggleFormVisibility" StartIcon="@Icons.Material.Filled.Email" /> *@
+@*         } *@
+@*         else *@
+@*         { *@
+@*             <MudOverlay @bind-Visible="IsFormVisible" DarkBackground AutoClose="true" OnClosed="OnOverlayClosed" /> *@
+@*             <MudPaper Class="email-form"> *@
+@*                 <MudForm @ref="form" @bind-IsValid="@ISuccess" @bind-Errors="@FormErrors" > *@
+@*                     <MudTextField T="string" @bind-Value="EmailForm.SenderEmail" Label="From" AdornmentAriaLabel="your-email@gmail.com" Clearable="true" *@
+@*                                   Required="true" RequiredError="Email is required!" *@
+@*                                   Validation="@(new EmailAddressAttribute() {ErrorMessage = "The email address is invalid"})" *@
+@*                                   Variant="Variant.Outlined" /> *@
+@* *@
+@*                     <MudTextField T="string" @bind-Value="EmailForm.Subject" Label="Subject" Clearable="true" *@
+@*                                   Lines="3" *@
+@*                                   Required="true" RequiredError="Subject is required!" *@
+@*                                   Variant="Variant.Outlined" /> *@
+@* *@
+@*                     <MudTextField T="string" @bind-Value="EmailForm.Body" Label="Message" Clearable="true" *@
+@*                                   Lines="6" *@
+@*                                   Required="true" RequiredError="Message is required!" *@
+@*                                   Variant="Variant.Outlined" /> *@
+@* *@
+@*                     <div class="actions"> *@
+@*                         @if (IsVisible) *@
+@*                         { *@
+@*                             <MudButton OnClick="@(() => SendEmail(EmailForm))" Disabled="true" Variant="Variant.Filled" Style="background-color: #133E87; color: white;"> *@
+@*                                 <MudText Class="ms-2 mr-2">Processing</MudText> *@
+@*                                 <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" /> *@
+@* *@
+@*                             </MudButton> *@
+@*                         } *@
+@*                         else *@
+@*                         { *@
+@*                             <MudButton OnClick="@(() => SendEmail(EmailForm))" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.Send" Style="background-color: #133E87; color: white;">Send Email</MudButton> *@
+@* *@
+@*                         } *@
+@*                          *@
+@* *@
+@*                         <MudButton Variant="Variant.Text" @onclick="ToggleFormVisibility">Cancel</MudButton> *@
+@*                     </div> *@
+@*                 </MudForm> *@
+@*             </MudPaper> *@
+@*         } *@
+@*     </div> *@
+@* </div> *@
 <style>
     .mud-fab-primary {
         color: var(--mud-palette-primary-text);

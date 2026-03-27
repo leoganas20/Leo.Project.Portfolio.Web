@@ -1,6 +1,10 @@
-﻿@inherits LayoutComponentBase
+@inherits LayoutComponentBase
+@inject IJSRuntime JSRuntime
+@inject Leo.Project.Portfolio.Web.Services.ThemeService ThemeService
+@implements IDisposable
+
 @* Required *@
-<MudThemeProvider />
+<MudThemeProvider IsDarkMode="@ThemeService.IsDarkMode" Theme="_currentTheme" />
 <MudPopoverProvider />
 
 @* Needed for dialogs *@
@@ -10,17 +14,61 @@
 <MudSnackbarProvider />
 
 <div class="page">
-    @*   <div class="sidebar">
-        <NavMenu />
-    </div>
- *@
     <main>
-        @*    <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
- *@
         <article class="content">
             @Body
         </article>
     </main>
 </div>
+
+@code {
+    private MudTheme _currentTheme = new MudTheme()
+    {
+        PaletteLight = new PaletteLight()
+        {
+            Primary = "#1f883d",
+            Background = "#ffffff",
+            Surface = "#f6f8fa",
+            TextPrimary = "#1f2328",
+            TextSecondary = "#656d76",
+            AppbarBackground = "#f6f8fa",
+            AppbarText = "#1f2328",
+            LinesDefault = "#d0d7de"
+        },
+        PaletteDark = new PaletteDark()
+        {
+            Primary = "#238636",
+            Background = "#0d1117",
+            Surface = "#161b22",
+            TextPrimary = "#e6edf3",
+            TextSecondary = "#848d97",
+            AppbarBackground = "#161b22",
+            AppbarText = "#e6edf3",
+            LinesDefault = "#30363d"
+        }
+    };
+
+    protected override void OnInitialized()
+    {
+        ThemeService.OnThemeChanged += StateHasChanged;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await ThemeService.InitializeAsync();
+            try
+            {
+                await JSRuntime.InvokeVoidAsync("scrollReveal.init");
+            }
+            catch (Exception) { }
+            StateHasChanged();
+        }
+    }
+
+    public void Dispose()
+    {
+        ThemeService.OnThemeChanged -= StateHasChanged;
+    }
+}

@@ -3,16 +3,21 @@
 @implements IBrowserViewportObserver
 @implements IAsyncDisposable  
 @inject IJSRuntime JS
+@inject Leo.Project.Portfolio.Web.Services.ThemeService ThemeService
 @inherits ComponentPageBase
 <header class="top-bar" style="background-color: var(--gh-bg); border-bottom: 1px solid var(--gh-border); color: var(--gh-text);">
     <div class="container">
         <div class="logo">
-            <img src="/images/LGdevLogo.png" width="100" style="object-fit: contain; filter: brightness(0) invert(1);">
+            <img src="/images/LGdevLogo.png" width="100" style="object-fit: contain; @(ThemeService.IsDarkMode ? "filter: brightness(0) invert(1);" : "")">
         </div>
         @if (new[] { Breakpoint.Xs, Breakpoint.Sm }.Contains(updateBreakpoint))
         {
              <div class="btn-group">
-                <MudChip T="string" Style="background-color: var(--gh-primary); color: white;" Class="mx-5" Disabled="@_processing" OnClick="ProcessSomething" Variant="Variant.Filled">
+                <MudIconButton Icon="@(ThemeService.IsDarkMode ? Icons.Material.Filled.WbSunny : Icons.Material.Filled.ModeNight)" 
+                               OnClick="@ThemeService.ToggleThemeAsync" 
+                               Style="color: var(--gh-text);" />
+
+                <MudChip T="string" Style="background-color: var(--gh-primary); color: white;" Class="mx-2" Disabled="@_processing" OnClick="ProcessSomething" Variant="Variant.Filled">
                     @if (_processing)
                     {
                         <MudText Class="mx-2">Processing</MudText>
@@ -43,6 +48,11 @@
                     <li><a href="#portfolio-gallery" style="color: var(--gh-text);">Experience</a></li>
                     <li><a href="#contact" style="color: var(--gh-text);">Contact</a></li>
                     <li class="chip-item">
+                        <MudIconButton Icon="@(ThemeService.IsDarkMode ? Icons.Material.Filled.WbSunny : Icons.Material.Filled.ModeNight)" 
+                                       OnClick="@ThemeService.ToggleThemeAsync" 
+                                       Style="color: var(--gh-text);" 
+                                       Class="mx-2"/>
+                                       
                         <MudChip T="string" Style="background-color: var(--gh-primary); color: white; height: 32px; border-radius: 6px;"
                                  Class="mx-5 px-4"
                                  Disabled="@_processing"
@@ -93,6 +103,12 @@
     private List<Breakpoint> _breakpointHistory = new();
     private Breakpoint _start;
     private Breakpoint updateBreakpoint;
+
+    protected override void OnInitialized()
+    {
+        ThemeService.OnThemeChanged += StateHasChanged;
+    }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -103,8 +119,11 @@
         await base.OnAfterRenderAsync(firstRender);
     }
 
-    public async ValueTask DisposeAsync() => await BrowserViewportService.UnsubscribeAsync(this);
-
+    public async ValueTask DisposeAsync() 
+    {
+        ThemeService.OnThemeChanged -= StateHasChanged;
+        await BrowserViewportService.UnsubscribeAsync(this);
+    }
     Guid IBrowserViewportObserver.Id { get; } = Guid.NewGuid();
 
     ResizeOptions IBrowserViewportObserver.ResizeOptions { get; } = new()

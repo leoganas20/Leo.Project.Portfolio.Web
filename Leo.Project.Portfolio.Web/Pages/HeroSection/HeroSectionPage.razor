@@ -2,7 +2,7 @@
 @using Leo.Projects.Portfolio.Web.Pages.ComponentPageBase;
 @implements IBrowserViewportObserver
 @implements IAsyncDisposable
-
+@inject IJSRuntime JS
 @inherits ComponentPageBase
 
 <section id="hero-section" class="hero-section">
@@ -41,10 +41,21 @@
 
                         <div class="profile-actions mt-6">
                             <a href="#contact" class="gh-btn-sidebar w-100 mb-2">Follow</a>
-                            <a href="/cv.pdf" class="gh-btn-sidebar w-100 d-flex align-center justify-center gap-2" target="_blank" style="color: white; border-color: var(--gh-border);">
-                                <MudIcon Icon="@Icons.Material.Filled.Download" Size="Size.Small" Style="color: white;" />
-                                <span>Download CV</span>
-                            </a>
+                            @if (_processing)
+                            {
+                                <a class="gh-btn-sidebar text-secondary w-100 d-flex align-center justify-center gap-2" target="_blank" style="color: white; border-color: var(--gh-border);">
+                                    <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                                    <span>Downloading ...</span>
+                                </a>
+                            }
+                            else
+                            {
+                                <a @onclick="@ProcessSomething" class="gh-btn-sidebar w-100 d-flex align-center justify-center gap-2" target="_blank" style="color: white; border-color: var(--gh-border);">
+                                    <MudIcon Icon="@Icons.Material.Filled.Download" Size="Size.Small" Style="color: white;" />
+                                    <span>Download CV</span>
+                                </a>
+                            }
+                           
                         </div>
                     </div>
                 </div>
@@ -55,14 +66,14 @@
                 <div class="readme-container">
                     <div class="readme-header d-flex align-center gap-2 mb-4">
                         <MudIcon Icon="@Icons.Material.Outlined.Book" Size="Size.Small" />
-                        <span class="readme-title">leoganas20 / README.md</span>
+                        <span class="readme-title">leoganas / README.md</span>
                     </div>
                     
                     <div class="readme-content">
                         <h2 class="readme-heading">Hey there, I'm Leo! 👋</h2>
                         <p class="readme-text">
-                            I'm a **Full-Stack .NET Software Developer** with 5+ years of experience building scalable web and mobile applications. 
-                            I specialize in **Blazor (WebAssembly & Hybrid MAUI)** and creating high-performance, maintainable codebases.
+                            I'm a <span class="fw-bold">Full-Stack .NET Software Developer</span> with 5+ years of experience building scalable web and mobile applications. 
+                            I specialize in Blazor (WebAssembly & Hybrid MAUI) and creating high-performance, maintainable codebases.
                         </p>
                         
                         <div class="contribution-section mt-8">
@@ -86,7 +97,7 @@
         color: var(--gh-text);
         padding-top: 40px;
         padding-bottom: 80px;
-        min-height: 90vh;
+        min-height: 80vh;
     }
 
     /* Profile Sidebar Styles */
@@ -168,6 +179,7 @@
     }
     .gh-btn-sidebar:hover {
         background-color: var(--gh-border);
+        cursor: pointer;
     }
 
     /* README Section Styles */
@@ -265,6 +277,7 @@
     private List<Breakpoint> _breakpointHistory = new();
     private Breakpoint _start;
     private Breakpoint updateBreakpoint;
+    private bool _processing = false;
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -301,6 +314,14 @@
 
     bool _expanded = false;
 
+    async Task ProcessSomething()
+    {
+        _processing = true;
+        await Task.Delay(1000);
+        await JS.InvokeVoidAsync("downloadCv");
+        _processing = false;
+    }
+    
     private void OnExpandCollapseClick()
     {
         _expanded = !_expanded;
