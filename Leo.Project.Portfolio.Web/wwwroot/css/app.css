@@ -132,8 +132,10 @@ ul {
     }
 }
 .container {
-    width: 89%;
+    width: 100%;
+    max-width: 1280px;
     margin: 0 auto;
+    padding: 0 24px;
 }
 .top-collapse {
     background-color: #DCD7C9;
@@ -315,7 +317,7 @@ ul {
     padding: 15px 0;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000; /* Higher z-index for top bar */
     height: 60px;
     width: 100%;
     display: flex;
@@ -324,7 +326,7 @@ ul {
 
 @media (max-width: 768px) {
     .container {
-        padding: 0 16px;
+        padding: 0 12px;
     }
 }
 
