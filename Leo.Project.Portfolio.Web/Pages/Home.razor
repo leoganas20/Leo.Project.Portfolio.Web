@@ -5,10 +5,9 @@
 @using static Leo.Project.Portfolio.Web.Pages.Weather
 
 @inject PortfolioApiService ApiService
-
+<LoaderPage IsVisible="@IsVisible"/>
 <div class="portfolio-container">
-    <LoaderPage IsVisible="@IsVisible"/>
-    
+     
     <!-- Top Bar -->
      <TopBarPage />
     
