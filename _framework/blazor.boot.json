@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Leo.Project.Portfolio.Web",
   "resources": {
-    "hash": "sha256-Pxo/qVfh/rfBXNFYd8u4PVWw4xmL5kaMRTMz5r+hV1g=",
+    "hash": "sha256-dZbvqS5mbH3y3DWIzIy+o9HYKtK6/9rSVLX9ICZVNvU=",
     "fingerprinting": {
       "Blazored.LocalStorage.12n6dz54qr.wasm": "Blazored.LocalStorage.wasm",
       "Microsoft.AspNetCore.Components.kmc3jqoj9g.wasm": "Microsoft.AspNetCore.Components.wasm",
@@ -48,7 +48,7 @@
       "System.Threading.fc7xv20kgn.wasm": "System.Threading.wasm",
       "System.dqfxtvioy0.wasm": "System.wasm",
       "System.Private.CoreLib.v4vyqyr07y.wasm": "System.Private.CoreLib.wasm",
-      "Leo.Project.Portfolio.Web.1iww8lwp9r.wasm": "Leo.Project.Portfolio.Web.wasm",
+      "Leo.Project.Portfolio.Web.t0id1u76in.wasm": "Leo.Project.Portfolio.Web.wasm",
       "dotnet.js": "dotnet.js",
       "dotnet.native.l1ds2rhypd.js": "dotnet.native.js",
       "dotnet.native.etgrtk5jba.wasm": "dotnet.native.wasm",
@@ -119,7 +119,7 @@
       "System.Text.RegularExpressions.lddovmoc8b.wasm": "sha256-uXC+VfN7HwBF7m9VAqQyYLcYPIXjKPj76ed8jlIguLw=",
       "System.Threading.fc7xv20kgn.wasm": "sha256-kZV/RzEVrmrCpYrO/hzO+TBN2qUD+UP1MmZqksYAMzg=",
       "System.dqfxtvioy0.wasm": "sha256-5QZAjy4n7513fYxCXSXTsAkUmRsLiZ8m621Ot4k7FB0=",
-      "Leo.Project.Portfolio.Web.1iww8lwp9r.wasm": "sha256-iSj/6yd2Fnd9te0yWMgZdNg48TtOyZRDS11KDvuZRjQ="
+      "Leo.Project.Portfolio.Web.t0id1u76in.wasm": "sha256-g5qA9t2AdjW/BAnk2pLiv0nPRyK0EtlG5HgX/TEF5sA="
     }
   },
   "cacheBootResources": true,
