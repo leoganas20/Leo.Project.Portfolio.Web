@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://leoganas20.github.io/Leo.Project.Portfolio.Web/sitemap.xml
