@@ -21,8 +21,6 @@ jobs:
 
       - name: Fix base-href and SPA routing
         run: |
-          # Change base href to repo name for sub-path hosting
-          sed -i 's/<base href="\/" \/>/<base href="\/Leo.Project.Portfolio.Web\/" \/>/g' release/wwwroot/index.html
           # Copy index to 404 for SPA routing fallback on GitHub Pages
           cp release/wwwroot/index.html release/wwwroot/404.html
           # Prevent GitHub from ignoring Jekyll folders
